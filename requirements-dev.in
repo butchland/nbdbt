@@ -2,3 +2,4 @@ nbdev
 jupyterlab
 jupyterlab-vim
 nbdime
+nb-black
