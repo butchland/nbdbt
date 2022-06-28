@@ -7,6 +7,7 @@ index = {"dbt.tracking.active_user": "00_dbt_cellmagic.ipynb",
          "dbt.flags.WRITE_JSON": "00_dbt_cellmagic.ipynb",
          "write_sql": "00_dbt_cellmagic.ipynb",
          "compile_model": "00_dbt_cellmagic.ipynb",
+         "exec_faldbt_ref": "00_dbt_cellmagic.ipynb",
          "write_dbt": "00_dbt_cellmagic.ipynb"}
 
 modules = ["dbt_cellmagic.py"]
