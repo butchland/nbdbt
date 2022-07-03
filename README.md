@@ -8,28 +8,27 @@ This package allows Jupyter notebooks to be used for developing dbt models and a
 
 ## Install
 
-`pip install nbdbt`
+`pip install git+https://github.com/butchland/nbdbt.git`
 
 ## How to use
 
 The `%%dbt` cell magic allows you to create models and analyses in your dbt project.
 
-In addition, this package also leverages the `fal` package which provides useful modules for using dbt in python.
+
+To use the `%%dbt` cellmagic in your notebook, you have to load the dbt cellmagic module first via `%load_ext` or `%reload_ext` line magics 
 
 ```python
 # load dbt cell magic
 %reload_ext nbdbt.dbt_cellmagic
 ```
 
-This will create a new model `my_third_model` and compile it as well
+The next cell uses the `%%dbt` cell magic which will create a new model `my_third_model` and compile it as well.
 
 ```python
 %%dbt -p ../my_dbt_project -a my_third_model -n notebooks/index.ipynb models/my_third_model.sql
 select *
 from {{ ref('my_second_dbt_model') }}
 ```
-
-The cell above creates a file 'my_third_model.sql' in the 'models' directory of the dbt project directory '../my_dbt_project' and compiles it as well.
 
 We then assigned the result of the compilation to the `my_third_model` variable, which is a Dbt (cell) magic object
 
@@ -40,7 +39,7 @@ my_third_model
 
 
 
-    <nbdbt.dbt_cellmagic.DbtMagicObject at 0x7f0f070191d0>
+    <nbdbt.dbt_cellmagic.DbtMagicObject at 0x7f6b7788b850>
 
 
 
@@ -106,19 +105,19 @@ We can then run the usual _dbt_ commands to generate the model
 %cd ../nbs
 ```
 
-    /home/butch2/play/experiments/nbdbt/my_dbt_project
-    06:48:18  Running with dbt=1.1.1
-    06:48:18  Found 3 models, 4 tests, 0 snapshots, 3 analyses, 191 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
-    06:48:18  
-    06:48:20  Concurrency: 1 threads (target='dev')
-    06:48:20  
-    06:48:20  1 of 1 START view model jaffle_shop.my_third_model ............................. [RUN]
-    06:48:21  1 of 1 OK created view model jaffle_shop.my_third_model ........................ [[32mOK[0m in 1.31s]
-    06:48:21  
-    06:48:21  Finished running 1 view model in 3.01s.
-    06:48:21  
-    06:48:21  [32mCompleted successfully[0m
-    06:48:21  
-    06:48:21  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+    /home/butch2/play/experiments/nbdbt/nbs
+    07:03:43  Running with dbt=1.1.1
+    07:03:44  Found 3 models, 4 tests, 0 snapshots, 3 analyses, 191 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
+    07:03:44  
+    07:03:45  Concurrency: 1 threads (target='dev')
+    07:03:45  
+    07:03:45  1 of 1 START view model jaffle_shop.my_third_model ............................. [RUN]
+    07:03:47  1 of 1 OK created view model jaffle_shop.my_third_model ........................ [[32mOK[0m in 1.42s]
+    07:03:47  
+    07:03:47  Finished running 1 view model in 3.07s.
+    07:03:47  
+    07:03:47  [32mCompleted successfully[0m
+    07:03:47  
+    07:03:47  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
     /home/butch2/play/experiments/nbdbt/nbs
 

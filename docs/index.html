@@ -45,7 +45,7 @@ nb_path: "nbs/index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>pip install nbdbt</code></p>
+<p><code>pip install git+https://github.com/butchland/nbdbt.git</code></p>
 
 </div>
 </div>
@@ -59,7 +59,13 @@ nb_path: "nbs/index.ipynb"
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The <code>%%dbt</code> cell magic allows you to create models and analyses in your dbt project.</p>
-<p>In addition, this package also leverages the <code>fal</code> package which provides useful modules for using dbt in python.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To use the <code>%%dbt</code> cellmagic in your notebook, you have to load the dbt cellmagic module first via <code>%load_ext</code> or <code>%reload_ext</code> line magics</p>
 
 </div>
 </div>
@@ -83,7 +89,7 @@ nb_path: "nbs/index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This will create a new model <code>my_third_model</code> and compile it as well</p>
+<p>The next cell uses the <code>%%dbt</code> cell magic which will create a new model <code>my_third_model</code> and compile it as well.</p>
 
 </div>
 </div>
@@ -109,7 +115,6 @@ from {{ ref(&#39;my_second_dbt_model&#39;) }}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The cell above creates a file 'my_third_model.sql' in the 'models' directory of the dbt project directory '../my_dbt_project' and compiles it as well.</p>
 <p>We then assigned the result of the compilation to the <code>my_third_model</code> variable, which is a Dbt (cell) magic object</p>
 
 </div>
@@ -137,7 +142,7 @@ from {{ ref(&#39;my_second_dbt_model&#39;) }}
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;nbdbt.dbt_cellmagic.DbtMagicObject at 0x7f0f070191d0&gt;</pre>
+<pre>&lt;nbdbt.dbt_cellmagic.DbtMagicObject at 0x7f6b7788b850&gt;</pre>
 </div>
 
 </div>
@@ -283,20 +288,20 @@ from `sample-dbt-learn-project`.`jaffle_shop`.`my_second_dbt_model`
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>/home/butch2/play/experiments/nbdbt/my_dbt_project
-06:48:18  Running with dbt=1.1.1
-06:48:18  Found 3 models, 4 tests, 0 snapshots, 3 analyses, 191 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
-06:48:18  
-06:48:20  Concurrency: 1 threads (target=&#39;dev&#39;)
-06:48:20  
-06:48:20  1 of 1 START view model jaffle_shop.my_third_model ............................. [RUN]
-06:48:21  1 of 1 OK created view model jaffle_shop.my_third_model ........................ [<span class="ansi-green-fg">OK</span> in 1.31s]
-06:48:21  
-06:48:21  Finished running 1 view model in 3.01s.
-06:48:21  
-06:48:21  <span class="ansi-green-fg">Completed successfully</span>
-06:48:21  
-06:48:21  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+<pre>/home/butch2/play/experiments/nbdbt/nbs
+07:03:43  Running with dbt=1.1.1
+07:03:44  Found 3 models, 4 tests, 0 snapshots, 3 analyses, 191 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
+07:03:44  
+07:03:45  Concurrency: 1 threads (target=&#39;dev&#39;)
+07:03:45  
+07:03:45  1 of 1 START view model jaffle_shop.my_third_model ............................. [RUN]
+07:03:47  1 of 1 OK created view model jaffle_shop.my_third_model ........................ [<span class="ansi-green-fg">OK</span> in 1.42s]
+07:03:47  
+07:03:47  Finished running 1 view model in 3.07s.
+07:03:47  
+07:03:47  <span class="ansi-green-fg">Completed successfully</span>
+07:03:47  
+07:03:47  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
 /home/butch2/play/experiments/nbdbt/nbs
 </pre>
 </div>
