@@ -13,6 +13,9 @@ from pathlib import Path
 from typing import Union, List, Dict, Optional
 
 # Internal Cell
+from fastcore.all import patch
+
+# Internal Cell
 from dbt.main import parse_args, adapter_management
 from dbt.task.compile import CompileTask
 from dbt.contracts.results import RunExecutionResult
