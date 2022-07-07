@@ -2,7 +2,8 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"dbt.tracking.active_user": "00_dbt_cellmagic.ipynb",
+index = {"IN_NBDBT_TEST": "00_dbt_cellmagic.ipynb",
+         "dbt.tracking.active_user": "00_dbt_cellmagic.ipynb",
          "dbt.flags.INDIRECT_SELECTION": "00_dbt_cellmagic.ipynb",
          "dbt.flags.WRITE_JSON": "00_dbt_cellmagic.ipynb",
          "dbt.flags.QUIET": "00_dbt_cellmagic.ipynb",
