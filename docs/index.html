@@ -89,6 +89,30 @@ nb_path: "nbs/index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>%dbtconfig</code> line magic configures a default project (and optionally the dbt profiles directory with <code>-d</code> flag)</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">dbtconfig</span> -p ../my_dbt_project
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>The next cell uses the <code>%%dbt</code> cell magic which will create a new model <code>my_third_model</code> and compile it as well.</p>
 
 </div>
@@ -101,7 +125,7 @@ nb_path: "nbs/index.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">dbt</span> -p ../my_dbt_project -a my_third_model -n notebooks/index.ipynb models/my_third_model.sql
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">dbt</span> -a my_third_model -n notebooks/index.ipynb models/my_third_model.sql
 select *
 from {{ ref(&#39;my_second_dbt_model&#39;) }}
 </pre></div>
