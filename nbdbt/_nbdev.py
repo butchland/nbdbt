@@ -7,6 +7,8 @@ index = {"IN_NBDBT_TEST": "00_dbt_cellmagic.ipynb",
          "dbt.flags.INDIRECT_SELECTION": "00_dbt_cellmagic.ipynb",
          "dbt.flags.WRITE_JSON": "00_dbt_cellmagic.ipynb",
          "dbt.flags.QUIET": "00_dbt_cellmagic.ipynb",
+         "nbdbt_config": "00_dbt_cellmagic.ipynb",
+         "config_dbt": "00_dbt_cellmagic.ipynb",
          "DbtMagicObject": "00_dbt_cellmagic.ipynb",
          "DbtMagicObject.ref": "00_dbt_cellmagic.ipynb",
          "write_dbt": "00_dbt_cellmagic.ipynb"}

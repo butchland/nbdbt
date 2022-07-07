@@ -33,6 +33,13 @@ nb_path: "nbs/00_dbt_cellmagic.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
 <div class="output_wrapper">
 <div class="output">
 
@@ -40,7 +47,46 @@ nb_path: "nbs/00_dbt_cellmagic.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="DbtMagicObject" class="doc_header"><code>class</code> <code>DbtMagicObject</code><a href="https://github.com/butchland/nbdbt/tree/master/nbdbt/dbt_cellmagic.py#L43" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DbtMagicObject</code>(<strong><code>raw_sql</code></strong>:<code>str</code>, <strong><code>file</code></strong>:<code>str</code>, <strong><code>project_dir</code></strong>:<code>Union</code>[<code>str</code>, <code>Path</code>], <strong><code>notebook_name</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>profile_dir</code></strong>:<code>Union</code>[<code>str</code>, <code>Path</code>]=<em><code>'~/.dbt'</code></em>)</p>
+<h4 id="config_dbt" class="doc_header"><code>config_dbt</code><a href="https://github.com/butchland/nbdbt/tree/master/nbdbt/dbt_cellmagic.py#L55" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>config_dbt</code>(<strong><code>line</code></strong>)</p>
+</blockquote>
+<p>::</p>
+<p>%config_dbt [-d PROFILE] [-p PROJECT]</p>
+<p>optional arguments:
+  -d PROFILE, --profile PROFILE
+                        If provided, override the dbt profiles directory
+                        (default: '~/.dbt')
+  -p PROJECT, --project PROJECT
+                        Set the dbt project directory</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="DbtMagicObject" class="doc_header"><code>class</code> <code>DbtMagicObject</code><a href="https://github.com/butchland/nbdbt/tree/master/nbdbt/dbt_cellmagic.py#L87" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DbtMagicObject</code>(<strong><code>raw_sql</code></strong>:<code>str</code>, <strong><code>file</code></strong>:<code>str</code>, <strong><code>project_dir</code></strong>:<code>Union</code>[<code>str</code>, <code>Path</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong><code>notebook_name</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>profile_dir</code></strong>:<code>Union</code>[<code>str</code>, <code>Path</code>, <code>NoneType</code>]=<em><code>None</code></em>)</p>
 </blockquote>
 <table>
 <thead><tr>
@@ -65,8 +111,8 @@ nb_path: "nbs/00_dbt_cellmagic.ipynb"
 </tr>
 <tr>
 <td><strong><code>project_dir</code></strong></td>
-<td><code>typing.Union[str, pathlib.Path]</code></td>
-<td></td>
+<td><code>typing.Union[str, pathlib.Path, NoneType]</code></td>
+<td><code>None</code></td>
 <td>dbt project dir</td>
 </tr>
 <tr>
@@ -77,8 +123,8 @@ nb_path: "nbs/00_dbt_cellmagic.ipynb"
 </tr>
 <tr>
 <td><strong><code>profile_dir</code></strong></td>
-<td><code>typing.Union[str, pathlib.Path]</code></td>
-<td><code>~/.dbt</code></td>
+<td><code>typing.Union[str, pathlib.Path, NoneType]</code></td>
+<td><code>None</code></td>
 <td>dbt profiles dir</td>
 </tr>
 </tbody>
@@ -140,7 +186,7 @@ nb_path: "nbs/00_dbt_cellmagic.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="DbtMagicObject.ref" class="doc_header"><code>DbtMagicObject.ref</code><a href="https://github.com/butchland/nbdbt/tree/master/nbdbt/dbt_cellmagic.py#L125" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>DbtMagicObject.ref</code>()</p>
+<h4 id="DbtMagicObject.ref" class="doc_header"><code>DbtMagicObject.ref</code><a href="https://github.com/butchland/nbdbt/tree/master/nbdbt/dbt_cellmagic.py#L177" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>DbtMagicObject.ref</code>()</p>
 </blockquote>
 
 </div>
@@ -171,7 +217,7 @@ nb_path: "nbs/00_dbt_cellmagic.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="write_dbt" class="doc_header"><code>write_dbt</code><a href="https://github.com/butchland/nbdbt/tree/master/nbdbt/dbt_cellmagic.py#L131" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>write_dbt</code>(<strong><code>line</code></strong>, <strong><code>cell</code></strong>)</p>
+<h4 id="write_dbt" class="doc_header"><code>write_dbt</code><a href="https://github.com/butchland/nbdbt/tree/master/nbdbt/dbt_cellmagic.py#L183" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>write_dbt</code>(<strong><code>line</code></strong>, <strong><code>cell</code></strong>)</p>
 </blockquote>
 <p>::</p>
 <p>%write_dbt [-a ASSIGN] [-p PROJECT] [-n NOTEBOOK] file</p>
@@ -210,7 +256,24 @@ nb_path: "nbs/00_dbt_cellmagic.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">dbt</span> -p ../my_dbt_project analyses/sample1.sql
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">dbtconfig</span> -p ../my_dbt_project
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">dbt</span> analyses/sample1.sql
 
 select *
 from {{ ref(&#39;my_first_dbt_model&#39;) }}
@@ -290,7 +353,7 @@ where id is not null
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">dbt</span> -a sample2 -p ../my_dbt_project -n notebooks/00_dbt_cellmagic.ipynb analyses/sample2.sql 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">dbt</span> -a sample2 -n notebooks/00_dbt_cellmagic.ipynb analyses/sample2.sql 
 
 select *
 from {{ ref(&#39;my_second_dbt_model&#39;) }}
