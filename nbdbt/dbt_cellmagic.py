@@ -11,6 +11,10 @@ from IPython.core.magic import register_cell_magic, register_line_magic
 # Internal Cell
 from pathlib import Path
 from typing import Union, List, Dict, Optional
+import os
+
+# Internal Cell
+IN_NBDBT_TEST = os.environ.get('IN_NBDBT_TEST','False').lower() == 'true'
 
 # Internal Cell
 from fastcore.all import patch
@@ -156,6 +160,8 @@ def ref(self: DbtMagicObject) -> pd.DataFrame:
 )
 @register_cell_magic("dbt")
 def write_dbt(line, cell):
+    if IN_NBDBT_TEST:
+        return None
     try:
         from dbt.main import parse_args
     except ImportError:
