@@ -17,20 +17,20 @@ The `%%dbt` cell magic allows you to create models and analyses in your dbt proj
 
 To use the `%%dbt` cellmagic in your notebook, you have to load the dbt cellmagic module first via `%load_ext` or `%reload_ext` line magics 
 
-```
+```python
 # load dbt cell magic
 %reload_ext nbdbt.dbt_cellmagic
 ```
 
 The `%dbtconfig` line magic configures a default project (and optionally the dbt profiles directory with `-d` flag) 
 
-```
+```python
 %dbtconfig -p ../my_dbt_project
 ```
 
 The next cell uses the `%%dbt` cell magic which will create a new model `my_third_model` and compile it as well.
 
-```
+```python
 %%dbt -a my_third_model -n notebooks/index.ipynb models/my_third_model.sql
 select *
 from {{ ref('my_second_dbt_model') }}
@@ -38,7 +38,7 @@ from {{ ref('my_second_dbt_model') }}
 
 We then assigned the result of the compilation to the `my_third_model` variable, which is a Dbt (cell) magic object
 
-```
+```python
 # skip_test
 my_third_model
 ```
@@ -46,13 +46,13 @@ my_third_model
 
 
 
-    <nbdbt.dbt_cellmagic.DbtMagicObject at 0x7f6b7788b850>
+    <nbdbt.dbt_cellmagic.DbtMagicObject at 0x7f21428e69d0>
 
 
 
 The `ref` method on `DbtMagicObject`  allows us to run the query and save the results into a dataframe.
 
-```
+```python
 # skip_test
 results = my_third_model.ref()
 results  # dataframe
@@ -95,7 +95,7 @@ results  # dataframe
 
 The dbt magic object also has access to other useful properties (like the compiled sql used to create the results)
 
-```
+```python
 # skip_test
 print(my_third_model._compiled_sql)
 ```
@@ -107,7 +107,7 @@ print(my_third_model._compiled_sql)
 
 We can then run the usual _dbt_ commands to generate the model 
 
-```
+```python
 # no_test
 %cd ../my_dbt_project
 ! dbt run --select my_third_model
@@ -115,18 +115,24 @@ We can then run the usual _dbt_ commands to generate the model
 ```
 
     /home/butch2/play/experiments/nbdbt/nbs
-    07:03:43  Running with dbt=1.1.1
-    07:03:44  Found 3 models, 4 tests, 0 snapshots, 3 analyses, 191 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
-    07:03:44  
-    07:03:45  Concurrency: 1 threads (target='dev')
-    07:03:45  
-    07:03:45  1 of 1 START view model jaffle_shop.my_third_model ............................. [RUN]
-    07:03:47  1 of 1 OK created view model jaffle_shop.my_third_model ........................ [[32mOK[0m in 1.42s]
-    07:03:47  
-    07:03:47  Finished running 1 view model in 3.07s.
-    07:03:47  
-    07:03:47  [32mCompleted successfully[0m
-    07:03:47  
-    07:03:47  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+    15:19:27  Running with dbt=1.1.1
+    15:19:27  Found 3 models, 4 tests, 0 snapshots, 3 analyses, 191 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
+    15:19:27  
+    15:19:28  Concurrency: 1 threads (target='dev')
+    15:19:28  
+    15:19:28  1 of 1 START view model jaffle_shop.my_third_model ............................. [RUN]
+    15:19:30  1 of 1 OK created view model jaffle_shop.my_third_model ........................ [[32mOK[0m in 1.32s]
+    15:19:30  
+    15:19:30  Finished running 1 view model in 3.23s.
+    15:19:30  
+    15:19:30  [32mCompleted successfully[0m
+    15:19:30  
+    15:19:30  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
     /home/butch2/play/experiments/nbdbt/nbs
 
+
+```python
+import nbdbt.dbt_cellmagic as nbc
+
+nbc.clear_cache()  # clears nbdtcache
+```
