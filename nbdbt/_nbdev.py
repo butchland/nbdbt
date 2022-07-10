@@ -3,11 +3,18 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"IN_NBDBT_TEST": "00_dbt_cellmagic.ipynb",
+         "NBDBT_DEBUG": "00_dbt_cellmagic.ipynb",
          "dbt.tracking.active_user": "00_dbt_cellmagic.ipynb",
          "dbt.flags.INDIRECT_SELECTION": "00_dbt_cellmagic.ipynb",
          "dbt.flags.WRITE_JSON": "00_dbt_cellmagic.ipynb",
          "dbt.flags.QUIET": "00_dbt_cellmagic.ipynb",
          "nbdbt_config": "00_dbt_cellmagic.ipynb",
+         "load_cache": "00_dbt_cellmagic.ipynb",
+         "update_cache": "00_dbt_cellmagic.ipynb",
+         "check_cache": "00_dbt_cellmagic.ipynb",
+         "update_dmo": "00_dbt_cellmagic.ipynb",
+         "CACHE_DIR": "00_dbt_cellmagic.ipynb",
+         "clear_cache": "00_dbt_cellmagic.ipynb",
          "config_dbt": "00_dbt_cellmagic.ipynb",
          "DbtMagicObject": "00_dbt_cellmagic.ipynb",
          "DbtMagicObject.ref": "00_dbt_cellmagic.ipynb",
