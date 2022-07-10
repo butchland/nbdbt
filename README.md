@@ -132,6 +132,7 @@ We can then run the usual _dbt_ commands to generate the model
 
 
 ```python
+# skip_test
 import nbdbt.dbt_cellmagic as nbc
 
 nbc.clear_cache()  # clears nbdtcache
