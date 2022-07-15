@@ -49,6 +49,7 @@ nbdbt_config = {
     if os.environ.get("DBT_PROFILES_DIR") is None
     else os.environ.get("DBT_PROFILES_DIR"),
     "project_dir": None,
+    "limit_default": 1000,
 }
 
 # Internal Cell
@@ -158,6 +159,13 @@ def clear_cache(project_dir=None):
     default=None,
     help=("Set the dbt project directory"),
 )
+@magic_arguments.argument(
+    "-l",
+    "--limit",
+    type=int,
+    default=1000,
+    help=("Set the default sql row limit"),
+)
 @register_line_magic("dbtconfig")
 def config_dbt(line):
     if IN_NBDBT_TEST:
@@ -171,6 +179,7 @@ def config_dbt(line):
         nbdbt_config["profiles_dir"] = line_args.profile
     if line_args.project is not None:
         nbdbt_config["project_dir"] = line_args.project
+    nbdbt_config["limit"] = line_args.limit
 
 # Cell
 
@@ -180,6 +189,7 @@ class DbtMagicObject:
         self,
         raw_sql: str,  # sql string
         file: str,  # path to sql file (relative to dbt project dir)
+        limit: int,  # limit row default
         project_dir: Optional[Union[str, Path]] = None,  # dbt project dir
         notebook_name: Optional[str] = None,  # name of notebook
         profile_dir: Optional[Union[str, Path]] = None,  # dbt profiles dir
@@ -187,6 +197,7 @@ class DbtMagicObject:
         """Create a holder of dbt cell magic parameters"""
         self.raw_sql = raw_sql
         self.file = file
+        self.limit = nbdbt_config["limit"] if limit == -1 else limit
         project_dir = (
             nbdbt_config["project_dir"] if project_dir is None else project_dir
         )
@@ -264,7 +275,7 @@ def _compile_model(self: DbtMagicObject) -> None:
 
 # Cell
 @patch
-def _exec_faldbt_ref(self: DbtMagicObject) -> None:
+def _exec_faldbt_ref(self: DbtMagicObject, limit) -> None:
     """Execute sql and return df"""
     if self._compiled_sql is None:
         raise ValueError("Model compilation step has not been executed")
@@ -274,8 +285,21 @@ def _exec_faldbt_ref(self: DbtMagicObject) -> None:
     )
     profile_target = faldbt._profile_target
     # adapter_response, result
+    limit = self.limit if limit == -1 else limit
+    if limit is None:
+        exec_sql = self._compiled_sql
+    else:
+        ctx_name = "xxx_yyy_zzz"
+        exec_sql = f"""with {ctx_name} as
+        (
+          {self._compiled_sql}
+        )
+        select * from {ctx_name}
+        limit {limit}
+        """
+
     _, result = fallib._execute_sql(
-        str(self.project_dir), str(self.profile_dir), self._compiled_sql, profile_target
+        str(self.project_dir), str(self.profile_dir), exec_sql, profile_target
     )
     self._exec_sql_result = result
     df_result = pd.DataFrame.from_records(
@@ -285,8 +309,8 @@ def _exec_faldbt_ref(self: DbtMagicObject) -> None:
 
 # Cell
 @patch
-def ref(self: DbtMagicObject) -> pd.DataFrame:
-    self._exec_faldbt_ref()
+def ref(self: DbtMagicObject, limit=-1) -> pd.DataFrame:
+    self._exec_faldbt_ref(limit)
     return self._df_result
 
 # Cell
@@ -313,6 +337,13 @@ def ref(self: DbtMagicObject) -> pd.DataFrame:
     help=("notebook source file"),
 )
 @magic_arguments.argument(
+    "-l",
+    "--limit",
+    type=int,
+    default=-1,
+    help=("sql limit default"),
+)
+@magic_arguments.argument(
     "file",
     type=str,
     help=("file path to write to"),
@@ -326,7 +357,9 @@ def write_dbt(line, cell):
     except ImportError:
         return "'dbt-core' not installed. Did you run 'pip install dbt-core'?"
     line_args = magic_arguments.parse_argstring(write_dbt, line)
-    dmo = DbtMagicObject(cell, line_args.file, line_args.project, line_args.notebook)
+    dmo = DbtMagicObject(
+        cell, line_args.file, line_args.limit, line_args.project, line_args.notebook
+    )
     cache = load_cache(line_args.file)
     if cache is None:
         dmo._write_sql()
