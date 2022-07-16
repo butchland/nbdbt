@@ -301,10 +301,7 @@ def _exec_faldbt_ref(self: DbtMagicObject, limit) -> None:
     _, result = fallib._execute_sql(
         str(self.project_dir), str(self.profile_dir), exec_sql, profile_target
     )
-    self._exec_sql_result = result
-    df_result = pd.DataFrame.from_records(
-        result.table.rows, columns=result.table.column_names, coerce_float=True
-    )
+    df_result = result
     self._df_result = df_result
 
 # Cell
