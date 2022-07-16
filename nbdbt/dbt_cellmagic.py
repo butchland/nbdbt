@@ -49,6 +49,7 @@ nbdbt_config = {
     if os.environ.get("DBT_PROFILES_DIR") is None
     else os.environ.get("DBT_PROFILES_DIR"),
     "project_dir": None,
+    "notebook": None,
     "limit_default": 1000,
 }
 
@@ -160,6 +161,13 @@ def clear_cache(project_dir=None):
     help=("Set the dbt project directory"),
 )
 @magic_arguments.argument(
+    "-n",
+    "--notebook",
+    type=str,
+    default=None,
+    help=("Set the notebook path"),
+)
+@magic_arguments.argument(
     "-l",
     "--limit",
     type=int,
@@ -179,6 +187,9 @@ def config_dbt(line):
         nbdbt_config["profiles_dir"] = line_args.profile
     if line_args.project is not None:
         nbdbt_config["project_dir"] = line_args.project
+    if line_args.notebook is not None:
+        nbdbt_config["notebook"] = line_args.notebook
+
     nbdbt_config["limit"] = line_args.limit
 
 # Cell
@@ -206,7 +217,12 @@ class DbtMagicObject:
         self.project_dir = (
             Path(project_dir) if type(project_dir) == str else project_dir
         )
+
+        notebook_name = (
+            nbdbt_config["notebook"] if notebook_name is None else notebook_name
+        )
         self.notebook_name = notebook_name
+
         profile_dir = (
             nbdbt_config["profiles_dir"] if profile_dir is None else profile_dir
         )
