@@ -266,7 +266,36 @@ nb_path: "nbs/00_dbt_cellmagic.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="write_dbt" class="doc_header"><code>write_dbt</code><a href="https://github.com/butchland/nbdbt/tree/master/nbdbt/dbt_cellmagic.py#L330" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>write_dbt</code>(<strong><code>line</code></strong>, <strong><code>cell</code></strong>)</p>
+<h4 id="None" class="doc_header"><code>None</code><a href="" class="source_link" style="float:right">[source]</a></h4>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="write_dbt" class="doc_header"><code>write_dbt</code><a href="https://github.com/butchland/nbdbt/tree/master/nbdbt/dbt_cellmagic.py#L383" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>write_dbt</code>(<strong><code>line</code></strong>, <strong><code>cell</code></strong>)</p>
 </blockquote>
 <p>::</p>
 <p>%write_dbt [-a ASSIGN] [-p PROJECT] [-n NOTEBOOK] [-l LIMIT] file</p>
@@ -534,7 +563,7 @@ from {{ ref(&#39;my_second_dbt_model&#39;) }}
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;__main__.DbtMagicObject at 0x7f466cd91590&gt;</pre>
+<pre>&lt;__main__.DbtMagicObject at 0x7efe6b4cb190&gt;</pre>
 </div>
 
 </div>
@@ -598,6 +627,277 @@ from {{ ref(&#39;my_second_dbt_model&#39;) }}
     <tr>
       <th>0</th>
       <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">faldbt</span> <span class="o">=</span> <span class="n">FalDbt</span><span class="p">(</span><span class="n">nbdbt_config</span><span class="p">[</span><span class="s2">&quot;project_dir&quot;</span><span class="p">],</span> <span class="n">nbdbt_config</span><span class="p">[</span><span class="s2">&quot;profiles_dir&quot;</span><span class="p">])</span>
+<span class="n">model0</span> <span class="o">=</span> <span class="n">faldbt</span><span class="o">.</span><span class="n">list_models</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">source0</span> <span class="o">=</span> <span class="n">faldbt</span><span class="o">.</span><span class="n">list_sources</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model0</span><span class="o">.</span><span class="n">schema</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>table_catalog</th>
+      <th>table_schema</th>
+      <th>table_name</th>
+      <th>column_name</th>
+      <th>ordinal_position</th>
+      <th>is_nullable</th>
+      <th>data_type</th>
+      <th>is_generated</th>
+      <th>generation_expression</th>
+      <th>is_stored</th>
+      <th>is_hidden</th>
+      <th>is_updatable</th>
+      <th>is_system_defined</th>
+      <th>is_partitioning_column</th>
+      <th>clustering_ordinal_position</th>
+      <th>collation_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sample-dbt-learn-project</td>
+      <td>jaffle_shop</td>
+      <td>my_third_model</td>
+      <td>id</td>
+      <td>1</td>
+      <td>YES</td>
+      <td>INT64</td>
+      <td>NEVER</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NO</td>
+      <td>None</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NaN</td>
+      <td>NULL</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">source0</span><span class="o">.</span><span class="n">schema</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>table_catalog</th>
+      <th>table_schema</th>
+      <th>table_name</th>
+      <th>column_name</th>
+      <th>ordinal_position</th>
+      <th>is_nullable</th>
+      <th>data_type</th>
+      <th>is_generated</th>
+      <th>generation_expression</th>
+      <th>is_stored</th>
+      <th>is_hidden</th>
+      <th>is_updatable</th>
+      <th>is_system_defined</th>
+      <th>is_partitioning_column</th>
+      <th>clustering_ordinal_position</th>
+      <th>collation_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>bigquery-public-data</td>
+      <td>ml_datasets</td>
+      <td>iris</td>
+      <td>sepal_length</td>
+      <td>1</td>
+      <td>YES</td>
+      <td>FLOAT64</td>
+      <td>NEVER</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NO</td>
+      <td>None</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NaN</td>
+      <td>NULL</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bigquery-public-data</td>
+      <td>ml_datasets</td>
+      <td>iris</td>
+      <td>sepal_width</td>
+      <td>2</td>
+      <td>YES</td>
+      <td>FLOAT64</td>
+      <td>NEVER</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NO</td>
+      <td>None</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NaN</td>
+      <td>NULL</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>bigquery-public-data</td>
+      <td>ml_datasets</td>
+      <td>iris</td>
+      <td>petal_length</td>
+      <td>3</td>
+      <td>YES</td>
+      <td>FLOAT64</td>
+      <td>NEVER</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NO</td>
+      <td>None</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NaN</td>
+      <td>NULL</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bigquery-public-data</td>
+      <td>ml_datasets</td>
+      <td>iris</td>
+      <td>petal_width</td>
+      <td>4</td>
+      <td>YES</td>
+      <td>FLOAT64</td>
+      <td>NEVER</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NO</td>
+      <td>None</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NaN</td>
+      <td>NULL</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>bigquery-public-data</td>
+      <td>ml_datasets</td>
+      <td>iris</td>
+      <td>species</td>
+      <td>5</td>
+      <td>YES</td>
+      <td>STRING</td>
+      <td>NEVER</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NO</td>
+      <td>None</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NaN</td>
+      <td>NULL</td>
     </tr>
   </tbody>
 </table>

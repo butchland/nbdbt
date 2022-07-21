@@ -1,5 +1,11 @@
-
 version: 2
+
+sources:
+  - name: public_datasets
+    database: bigquery-public-data
+    schema: ml_datasets
+    tables:
+      - name: iris
 
 models:
   - name: my_first_dbt_model

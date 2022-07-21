@@ -18,6 +18,7 @@ index = {"IN_NBDBT_TEST": "00_dbt_cellmagic.ipynb",
          "config_dbt": "00_dbt_cellmagic.ipynb",
          "DbtMagicObject": "00_dbt_cellmagic.ipynb",
          "DbtMagicObject.ref": "00_dbt_cellmagic.ipynb",
+         "schema": "00_dbt_cellmagic.ipynb",
          "write_dbt": "00_dbt_cellmagic.ipynb"}
 
 modules = ["dbt_cellmagic.py"]
