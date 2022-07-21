@@ -17,20 +17,20 @@ The `%%dbt` cell magic allows you to create models and analyses in your dbt proj
 
 To use the `%%dbt` cellmagic in your notebook, you have to load the dbt cellmagic module first via `%load_ext` or `%reload_ext` line magics 
 
-```python
+```
 # load dbt cell magic
 %reload_ext nbdbt.dbt_cellmagic
 ```
 
 The `%dbtconfig` line magic configures a default project (and optionally the dbt profiles directory with `-d` flag as well as the notebook path with the `-n` flag).
 
-```python
+```
 %dbtconfig -p ../my_dbt_project -n notebooks/index.ipynb
 ```
 
 The next cell uses the `%%dbt` cell magic which will create a new model `my_third_model` and compile it as well.
 
-```python
+```
 %%dbt -a my_fourth_model models/my_fourth_model.sql
 select *
 from {{ ref('my_second_dbt_model') }}
@@ -38,7 +38,7 @@ from {{ ref('my_second_dbt_model') }}
 
 We then assigned the result of the compilation to the `my_third_model` variable, which is a Dbt (cell) magic object
 
-```python
+```
 # skip_test
 my_fourth_model
 ```
@@ -52,7 +52,7 @@ my_fourth_model
 
 The `ref` method on `DbtMagicObject`  allows us to run the query and save the results into a dataframe.
 
-```python
+```
 # skip_test
 results = my_fourth_model.ref()
 results  # dataframe
@@ -95,7 +95,7 @@ results  # dataframe
 
 The dbt magic object also has access to other useful properties (like the compiled sql used to create the results)
 
-```python
+```
 # skip_test
 print(my_fourth_model._compiled_sql)
 ```
@@ -107,7 +107,7 @@ print(my_fourth_model._compiled_sql)
 
 We can then run the usual _dbt_ commands to generate the model 
 
-```python
+```
 # no_test
 %cd ../my_dbt_project
 ! dbt run --select my_fourth_model
@@ -131,7 +131,7 @@ We can then run the usual _dbt_ commands to generate the model
     /home/butch2/play/experiments/nbdbt/nbs
 
 
-```python
+```
 # skip_test
 import nbdbt.dbt_cellmagic as nbc
 

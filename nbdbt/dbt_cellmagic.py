@@ -326,12 +326,10 @@ def ref(self: DbtMagicObject, limit=-1) -> pd.DataFrame:
     self._exec_faldbt_ref(limit)
     return self._df_result
 
-# Cell
-
-# from fal import FalDbt
-# import faldbt.lib as fallib
+# Internal Cell
 from faldbt.project import _DbtTestableNode
 
+# Cell
 
 @patch(as_prop=True)
 def schema(self: _DbtTestableNode) -> pd.DataFrame:
